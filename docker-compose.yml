@@ -1,0 +1,14 @@
+version: '3'
+services:
+  build:
+    image:  nodebug-build
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .stack:/home/buildusr/.stack
+      - .:/workspace
+    entrypoint:
+      - /bin/sh
+      - -c
+      - 'stack clean && stack-build-static'
